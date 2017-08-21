@@ -1,0 +1,215 @@
+function add(){
+console.log("this is a function ");
+}
+undefined
+add(100,200);
+VM80:2 this is a function 
+undefined
+add();
+VM80:2 this is a function 
+undefined
+add([10,20],90);
+VM80:2 this is a function 
+undefined
+add("amit");
+VM80:2 this is a function 
+undefined
+console.dir(add);
+VM167:1 ƒ add()arguments: nullcaller: nulllength: 0name: "add"prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM80:1[[Scopes]]: Scopes[1]
+undefined
+function add(){
+console.log("this is a function ",arguments.length);
+}
+undefined
+add();
+VM193:2 this is a function  0
+undefined
+add(10,20);
+VM193:2 this is a function  2
+undefined
+add("amit",10);
+VM193:2 this is a function  2
+undefined
+function add(){
+//console.log("this is a function ",arguments.length);
+var sum = 0;
+for(var i = 0; i<arguments.length; i++){
+sum += arguments[i]);
+}
+}
+VM303:5 Uncaught SyntaxError: Unexpected token )
+function add(){
+//console.log("this is a function ",arguments.length);
+var sum = 0;
+for(var i = 0; i<arguments.length; i++){
+sum += arguments[i];
+}
+}
+undefined
+add();
+undefined
+function add(){
+//console.log("this is a function ",arguments.length);
+var sum = 0;
+for(var i = 0; i<arguments.length; i++){
+sum += arguments[i];
+}
+return sum;
+}
+undefined
+add();
+0
+add(10,20);
+30
+add(1,2,3,4,5,6,7,8,9,10);
+55
+add(10,20,"30");
+"3030"
+function add(){
+//console.log("this is a function ",arguments.length);
+var sum = 0;
+for(var i = 0; i<arguments.length; i++){
+sum += parseInt(arguments[i]);
+}
+return sum;
+}
+undefined
+add(10,20,"30");
+60
+add("amit",10,20,"30");
+NaN
+parseInt("amit");
+NaN
+parseInt("amit") + 10;
+NaN
+isNaN(parseInt("amit"));
+true
+isNaN(parseInt("amit"))?0:10;
+0
+function add(){
+//console.log("this is a function ",arguments.length);
+var sum = 0;
+for(var i = 0; i<arguments.length; i++){
+sum += isNaN(parseInt(arguments[i]))?0:parseInt(arguments[i]);
+}
+return sum;
+}
+undefined
+add("amit",10,20,"30");
+60
+function add(){
+//console.log("this is a function ",arguments.length);
+var sum = 0;
+for(var i = 0; i<arguments.length; i++){
+sum += isNaN(parseInt(arguments[i]))?0:parseInt(arguments[i]);
+}
+console.log("I is "+i);
+return sum;
+}
+undefined
+add(10,20);
+VM520:7 I is 2
+30
+function add(){
+//console.log("this is a function ",arguments.length);
+var sum = 0;
+for(let i = 0; i<arguments.length; i++){
+sum += isNaN(parseInt(arguments[i]))?0:parseInt(arguments[i]);
+}
+console.log("I is "+i);
+return sum;
+}
+undefined
+add(10,20);
+VM526:7 Uncaught ReferenceError: i is not defined
+    at add (<anonymous>:7:21)
+    at <anonymous>:1:1
+add @ VM526:7
+(anonymous) @ VM528:1
+add(function(){
+return 1000
+},function(){
+return 2000
+});
+VM526:7 Uncaught ReferenceError: i is not defined
+    at add (<anonymous>:7:21)
+    at <anonymous>:1:1
+add @ VM526:7
+(anonymous) @ VM625:1
+function add(){
+//console.log("this is a function ",arguments.length);
+var sum = 0;
+for(let i = 0; i<arguments.length; i++){
+sum += isNaN(parseInt(arguments[i]))?0:parseInt(arguments[i]);
+}
+//console.log("I is "+i);
+return sum;
+}
+undefined
+add(function(){
+return 1000
+},function(){
+return 2000
+});
+0
+typeof add;
+"function"
+function add(){
+//console.log("this is a function ",arguments.length);
+var sum = 0;
+for(let i = 0; i<arguments.length; i++){
+if(typeof arguments[i]==="function"){
+arguments[i] = arguments[i]();
+}
+sum += isNaN(parseInt(arguments[i]))?0:parseInt(arguments[i]);
+}
+//console.log("I is "+i);
+return sum;
+}
+undefined
+add(function(){
+return 1000
+},function(){
+return 2000
+});
+3000
+var r = ()=>1000;
+undefined
+var r1 = function(){
+return 2000;
+}
+undefined
+typeof r;
+"function"
+typeof r1;
+"function"
+r();
+1000
+r1():
+VM809:1 Uncaught SyntaxError: Unexpected token :
+r1();
+2000
+add(()=>1000,()=>2000,1,"2","hello");
+3003
+function add(){
+//console.log("this is a function ",arguments.length);
+var sum = 0;
+for(let i = 0; i<arguments.length; i++){
+if(typeof arguments[i]==="function"){
+arguments[i] = arguments[i]();
+}
+if(arguments[i] instanceof Array){
+for(let j = 0; j<arguments[i].length; j++){
+sum+=isNaN(parseInt(arguments[i][j]))?0:parseInt(arguments[i][j]);
+}
+}
+else{
+sum += isNaN(parseInt(arguments[i]))?0:parseInt(arguments[i]);
+}
+}
+//console.log("I is "+i);
+return sum;
+}
+undefined
+add([1,2,3],[4,5,6],1,"2","Hello",()=>1,()=>2);
+27
