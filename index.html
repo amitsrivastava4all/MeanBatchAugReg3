@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="libs/p5.min.js"></script>
+	<script>
+	function setup(){
+		const BWIDTH=600;
+		const BHEIGHT=500;
+		createCanvas(BWIDTH,BHEIGHT);
+		background('black');
+	}
+		var i = 1;
+		var c = 1;
+		var colorValue = "";
+	function draw(){
+		fill('cyan');
+		rect(100,100,50,50);
+		if(c==1){
+			colorValue="red";
+		}
+		if(c==2){
+			colorValue="green";
+		}
+		if(c==3){
+			colorValue="yellow";
+			c = 0;
+		}
+		
+		fill(colorValue);
+		rotate(i);
+		ellipse(200,100,50,50);
+		
+		i+=5;c++;
+	}	
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
