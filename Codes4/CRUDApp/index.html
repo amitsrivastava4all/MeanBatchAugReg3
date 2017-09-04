@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ITEM CRUD</title>
+	<link rel="stylesheet" href="css/custom.css">
+	<script src="js/item.js"></script>
+	<script src="js/itemoperations.js"></script>
+	<script src="js/controller.js"></script>
+</head>
+<body>
+	<fieldset>
+		<legend>ITEM DETAILS</legend>
+		<table>
+			<tr>
+				<td><label for="">ItemId</label></td>
+				<td><label id="itemno" ></label></td>
+			</tr>
+			<tr>
+				<td><label for="">Name</label></td>
+				<td><input type="text" id="itemname" placeholder="Item Name"></td>
+			</tr>
+			<tr>
+				<td><label for="">Descr</label></td>
+				<td><textarea  id="descr" cols="30" rows="5"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="">Item Date</label></td>
+				<td><input type="date" id="itemdate"></td>
+			</tr>
+			<tr>
+				<td><label for="">Item Color</label></td>
+				<td><input type="color" id="itemcolor"></td>
+			</tr>
+			<tr>
+				<td><label for="">branch</label></td>
+				<td><select name="" id="itembranch">
+					<option >Delhi</option>
+					<option >Mumbai</option>
+					
+				</select></td>
+			</tr>
+			
+		</table>
+		<h2>Total Records are <span id="total"></span></h2>
+		<table>
+			<tr>
+				<td><button id='add'>Add</button></td>
+				<td><button>Delete</button></td>
+				<td><button>Search</button></td>
+				<td><button>Update</button></td>
+				<td><button>Save</button></td>
+				<td><button>Save Local</button></td>
+				<td><button>Fetch Local</button></td>
+				<td><button>Fetch</button></td>
+				<td><button>Sort</button></td>
+				<td><button>Clear All</button></td>
+			</tr>
+		</table>
+	</fieldset>
+	<fieldset>
+		<legend>Item List</legend>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>ItemNo</th>
+					<th>Name</th>
+					<th>Desc</th>
+					<th>Date</th>
+					<th>Branch</th>
+					<th>Color</th>
+					<th>Operation</th>
+				</tr>
+			</thead>
+			<tbody id="itemtable">
+				
+			</tbody>
+		</table>
+	</fieldset>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.imagestyle{
+width: 32px;
+	height: 32px;
+	cursor: pointer;
+}
+.redrow{
+background-color: red;
+color:yellow;
+font-style: italic;
+}
