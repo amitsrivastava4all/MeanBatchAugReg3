@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+		.small{
+			width: 200px;
+			height: 200px;
+		}
+		.hide{
+			display: none;
+		}
+		.show{
+		display: block;
+		}
+	</style>
+	<title>Document</title>
+	<script>
+		window.addEventListener("load",function(){
+			document.getElementById("loading").className="hide";
+		})
+	function doAjax(){
+		document.getElementById("loading").className="show";
+		var searchTxt = document.getElementById("search").value;
+		var apiKey = "44ad31a2d0324ab9b17fc6d6026f658b";
+		var url = "http://api.giphy.com/v1/gifs/search?q="+searchTxt+"&api_key="+apiKey+"&limit=5";
+		
+		var obj = new XMLHttpRequest();
+		obj.open("GET",url);
+		obj.onreadystatechange=function(){
+			if(obj.readyState == 4 && obj.status==200){
+				var object = JSON.parse(obj.responseText);
+				var div = document.getElementById("result");
+				document.getElementById("loading").className="hide";
+				for(let i = 0; i<object.data.length; i++){
+				var img = document.createElement("img");
+					img.src  = object.data[i].images.original.url;
+					img.className="small";
+					div.appendChild(img);
+				}
+				
+			}
+		}
+		obj.send(null);
+	}
+	</script>
+</head>
+<body>
+<h1>Welcome to Ajax Call</h1>
+<div id="loading">
+	<img src="Pacman.gif" alt="Loading....">
+</div>
+<input type="text" id="search" placeholder="Type to Search">
+	<button onclick="doAjax()">
+	Search	
+	</button>
+	<div id="result">
+		
+	</div>
+</body>
+</html>
