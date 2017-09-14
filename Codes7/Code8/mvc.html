@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MVC App</title>
+	<style>
+		.default{
+			color: black;
+		}
+		.red{
+			color:red;
+			font-style: italic;
+		}
+		.green{
+			color:green;
+			font-weight: bold;
+		}
+	</style>
+	<script src="angular.min.js"></script>
+	<script>
+	// Step -1 Create Module
+		var app = angular.module("myapp",[]);
+	// Step - 2 Create Controller
+		app.controller("myctrl",mycontroller);
+		function mycontroller($scope,myfactory){
+			$scope.result = 0;
+			$scope.style ='default';
+			console.log("Controller Start....");
+			$scope.compute=function(){
+				console.log("compute Start...");
+				$scope.result = myfactory.computeAmount($scope.pr, $scope.qt);
+				if($scope.result>9000){
+					$scope.style='green';
+				}
+				else{
+					$scope.style='red';
+				}
+				//$scope.result = $scope.pr * $scope.qt;
+			}
+		}
+		// Step -3 Model
+		app.factory("myfactory",logic);
+	
+		function logic(){
+			console.log("Factory Start...")
+			var object = {
+				computeAmount(price, quantity){
+					console.log("Compute Amount of Factory is Called...")
+					return price * quantity;
+				}
+			};
+			return object;
+		}
+	</script>
+</head>
+<body ng-app="myapp" >
+<div ng-controller="myctrl">
+	<input type="text" ng-model="pr">
+	<input type="text" ng-model="qt">
+	<button ng-click="compute()">Compute</button>
+	<p class="{{style}}">Result is {{result}}</p>
+	<p ng-class="{red:result<9000,green:result>=9000}">Ng Class Demo</p>
+	</div>	
+</body>
+</html>
