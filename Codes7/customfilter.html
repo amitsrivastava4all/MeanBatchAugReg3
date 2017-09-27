@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="libs/angular.min.js"></script>
+	<script>
+	const app =angular.module("myapp",[]);
+	app.controller("myctrl",($scope)=>{
+		
+	})
+	app.filter("initcap",()=>{
+		return function(str,args,x){
+			console.log('Args is ',args);
+			console.log('x Args is ',x);
+			return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
+		
+		}
+	});
+		app.filter("repeat",()=>{
+		return function(str,start,end){
+			var result = "";
+			for(let i = parseInt(start); i<=parseInt(end);i++){
+				result += str +" ";
+			}
+			return result;
+		
+		}
+	});
+	</script>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+<input type="text" ng-model="name" ng-init="name=''">
+	{{name|initcap:'A':'B'}}  
+	{{name|repeat:1:10}} 
+</body>
+</html>
