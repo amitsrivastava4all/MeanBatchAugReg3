@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Server Call</title>
+	<style>
+		img{
+			width:200px;
+			height:200px;
+		}
+	</style>
+	<script src="libs/angular.min.js"></script>
+	<script>
+	const app = angular.module("myapp",[]);
+	app.controller("myctrl",($scope,myfactory)=>{
+		$scope.load=()=>{
+			console.log("U Click on Button Load Fn Call");
+			var pid = $scope.pid;
+			var promise = myfactory.serverCall(pid);
+			for(let i = 1;i<=10; i++){
+				console.log("I am Doing Something else ",i*2);
+			}
+			promise.then((result)=>{
+				$scope.mydata = result;
+			},(err)=>{
+				$scope.error = err;
+			})
+			
+		}
+	});
+	app.factory("myfactory",($http,$q)=>{
+		
+		return{
+			serverCall(pid){
+				const url = 'http://cricapi.com/api/playerStats?pid='+pid+'&apikey=A8zoDoPaQgefmB7KunnSuApSgL73';
+				console.log("Server Call ....");
+				var fakeObject = $q.defer();
+				$http.get(url).then(success,fail);
+				console.log("Send the Server Call");
+				function success(result){
+					console.log("Success Call...");
+					fakeObject.resolve(result);
+				}
+				function fail (err){
+					console.log("Fail Call");
+					fakeObject.reject(err);
+				}
+				console.log("Going to Return Promise...");
+				return fakeObject.promise;
+				}
+		}
+	})	
+	</script>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+<select ng-model="pid">
+	<option value="28081">M.S Dhoni</option>
+	<option value="35320">Sachin</option>
+	<option value="253802">Virat</option>
+	
+</select>
+
+	<button ng-click="load()">Load Data</button>
+	<img ng-src="{{mydata.data.imageURL}}">
+	<ul>
+		<li>Country {{mydata.data.country}}</li>
+		<li>Bowling Style {{mydata.data.bowlingStyle}}</li>
+		<li>Batting Style {{mydata.data.battingStyle}}</li>
+		<li>Age {{mydata.data.currentAge}}</li>
+		<li>Full Name {{mydata.data.fullName}}</li>
+		<li>Born {{mydata.data.born}}</li>
+		
+	</ul>
+	{{error}}
+</body>
+</html>

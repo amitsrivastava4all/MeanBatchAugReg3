@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div1{
+			border-color: red;
+			border-width: 2px;
+			border-style: solid;
+		}
+		#div2{
+			border-color: green;
+			border-width: 2px;
+			border-style: solid;
+		}
+	</style>
+	<script src="AngularDemos/angular.min.js"></script>
+	<script>
+	const app = angular.module("myapp",[]);
+	app.controller("myctrl1",($scope,$rootScope,myfactory)=>{
+		$rootScope.firstName = "Amit";
+		myfactory.setX();
+		$scope.data = myfactory.getX();
+	});
+	app.controller("myctrl2",($scope,myfactory)=>{
+		$scope.lastName = "Srivastava";
+		$scope.mydata = myfactory.getX();
+	});	
+		
+	app.factory("myfactory",()=>{
+		return {
+			x:100,
+			setX(){
+				this.x++;
+			},
+			getX(){
+			return this.x;
+			}
+			
+		}
+	})	
+		
+	</script>
+</head>
+<body ng-app="myapp">
+	<div id="div1" ng-controller="myctrl1">
+		<fieldset>
+			<legend>Controller1</legend>
+			First Name is {{firstName}}
+			Now Data is {{data}}
+		</fieldset>
+		
+		
+	</div>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<div id="div2" ng-controller="myctrl2">
+		<fieldset>
+			<legend>Controller2</legend>
+			First Name is {{firstName}}
+			Last Name is {{lastName}}
+			Now Data is {{mydata}}
+		</fieldset>
+	</div>
+	
+</body>
+</html>

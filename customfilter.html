@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="libs/angular.min.js"></script>
+	<script>
+	const app =angular.module("myapp",[]);
+	app.controller("myctrl",($scope,$filter)=>{
+		$scope.fullname ="";
+		$scope.call=function(){
+			$scope.fullname = $scope.name +" Kumar";
+			//$scope.myresult = $filter('initcap')($scope.name,'A','B');
+			//$scope.myresult2 =$filter('repeat')($scope.name,'1','10');
+		}
+	})
+	app.filter("initcap",()=>{
+		return function(str,args,x){
+			console.log('Args is ',args);
+			console.log('x Args is ',x);
+			return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
+		
+		}
+	});
+		app.filter("repeat",()=>{
+		return function(str,start,end){
+			var result = "";
+			for(let i = parseInt(start); i<=parseInt(end);i++){
+				result += str +" ";
+			}
+			return result;
+		
+		}
+	});
+	</script>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+<input type="text" ng-model="name" ng-init="name=''">
+<button ng-click="call()">Call Me</button>
+	{{fullname|initcap:'A':'B'}}  
+	{{fullname|repeat:1:10}} 
+<!--
+{{myresult}}
+-->
+<!-- {{myresult2}}
+-->
+</body>
+</html>
