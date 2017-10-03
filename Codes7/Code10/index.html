@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="custom.css">
+	<script src="../AngularDemos/angular.min.js"></script>
+	<script src="angular-route.min.js"></script>
+	<script src="app.js"></script>
+	<script src="aboutcontroller.js"></script>
+	<script src="contactcontroller.js"></script>
+	<script src="routes.js"></script>
+</head>
+<body ng-app="shopapp">
+<div>
+	<header>
+		<h1>Welcome to Online Shop App</h1>
+		<ul id="nav">
+			<li><a ng-href="#/">Home</a></li>
+			<li><a ng-href="#/about">AboutUs</a></li>
+			<li><a ng-href="#/contact/Shyam/Manager">ContactUs</a></li>
+			<li><a ng-href="#/news">News</a></li>
+		</ul>
+	</header>
+	<hr>
+</div>
+<div>
+	<section>
+		<ng-view></ng-view>
+	</section>
+</div>
+<div>
+	<footer>
+	<hr>
+		<h2>Terms and Conditions</h2>
+	</footer>
+</div>
+	
+</body>
+</html>
