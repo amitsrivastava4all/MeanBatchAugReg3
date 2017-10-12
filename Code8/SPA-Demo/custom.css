@@ -1,0 +1,12 @@
+section{
+height: 300px;
+}
+#nav>li{
+	display: inline;
+	padding:25px;
+}
+#nav>li>a{
+	color: blue;
+	text-decoration: underline;
+	cursor: pointer;
+}
