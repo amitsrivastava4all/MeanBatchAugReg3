@@ -1,0 +1,43 @@
+VSCODE TIPS
+
+Select All occurrence
+Ctrl + Shift + L
+
+Select Next Occurrence
+Ctrl + D
+
+Place Multiple Cursor 
+Click on Any Place + Alt Key
+
+Or
+Mac opt+cmd+up or opt+cmd+down
+Windows: ctrl+alt+up or ctrl+alt+down
+Linux: alt+shift+up or alt+shift+down
+
+
+Go to Line Number
+Ctrl + G or CMD + P
+
+Code Formatting
+Ctrl + K 
+
+Select Current Line
+Cmd
+
+Quick Open any File
+Ctrl + P
+
+Choose Language Mode
+Ctrl + K then m
+
+Zen Mode
+Ctrl + k then Z
+
+Create and Open a File  ( First Add any File in script or link which is not exist then do the following)
+ Ctrl + Click
+
+
+Close Currently Open File
+CMD + W - For Mac
+Ctrl + K then F — For Windows/ Linux
+
