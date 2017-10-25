@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .apperror{
+            color:red;
+            font-style: italic;
+        }
+        input.ng-invalid{
+            border-color:red;
+            border-width: 2px;
+            border-style: solid;
+        } 
+        input.ng-valid{
+            border-color:green;
+            border-width: 2px;
+            border-style: solid;
+        } 
+        input.ng-invalid-pattern{
+            border-color:orange;
+            border-width: 5px;
+            border-style: solid;
+        }
+    </style>    
+  
+    <script src="angular.min.js"></script>
+<script>
+    const app = angular.module("myapp",[]);
+    app.controller("myctrl",($scope)=>{
+            $scope.validate=(formName)=>{
+                  if(formName.$valid){
+                      $scope.result = "Form is Valid..."
+                  } 
+                  else{
+                      $scope.result = "Invaid Form ";
+                  } 
+            }   
+    });
+
+</script>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+    <h1>Result is {{result}}</h1>
+    <form name="form1" novalidate ng-submit="validate(form1)">
+    <input type="text" name="userid" ng-model="userid" placeholder="Type Name Here" required>
+    <span class="apperror"  ng-show="form1.userid.$touched && form1.userid.$pristine && form1.userid.$error.required">userid can't be Empty</span>
+    
+    <input type="email"  name="email" ng-model="email" placeholder="Type Email Here" required />
+    <input type="text" name="creditcard" ng-model="creditcard" pattern="[0-9]{10,16}" title="Invalid Credit Card No" placeholder="Type Credit Card no" required/>
+    
+    <span class="apperror"  ng-show="form1.creditcard.$touched && form1.creditcard.$pristine && form1.creditcard.$error.required" >Credit Card No Can't Be Empty!!!</span>
+    <span class="apperror" ng-show="form1.creditcard.$touched && form1.creditcard.$dirty && form1.creditcard.$error.pattern">Invalid Credit Card Number</span>
+    <hr>
+    <button type="submit">Submit</button>    
+</form>
+</body>
+</html>
