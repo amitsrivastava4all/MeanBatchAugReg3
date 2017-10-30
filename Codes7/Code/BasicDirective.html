@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="angular.min.js">
+	</script>
+	<script>
+	var app = angular.module("myapp",[]);
+		app.controller("myctrl",function($scope){
+			$scope.name = "Ram";
+		})
+		app.controller("myctrl2",function($scope){
+			$scope.name = "Shyam";
+		})
+
+// <tcs-header><tcs:header> <tcs_header>
+app.directive("tcsHeader",function(){
+    return {
+        template:"<h1>This is Page Header , and Welcome {{name}}</h1>",
+        restrict:"E"  // Element Level, Attribute Level , Class Level, Comment Level
+    }
+});
+app.directive("tcsFooter",function(){
+    return {
+        template:"<h1>This is Page Footer</h1>",
+        restrict:"E"  // Element Level, Attribute Level , Class Level, Comment Level
+    }
+});		
+	</script>
+	
+</head>
+<body ng-app="myapp">
+<div ng-controller="myctrl2">
+	<tcs-header></tcs-header>
+	</div>
+	<h1>Body</h1>
+	<tcs-footer></tcs-footer>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Directive Demos</title>
+    <style>
+        ul>li{
+            color:red;
+            
+        }
+    </style>    
+    <script src="angular.min.js">
+        
+</script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    const app = angular.module("myapp",[]);
+    app.controller("myctrl",function($scope){
+            $scope.menu = ["Home Page","About Us","News"];
+    });
+    app.directive("shopHeader",function(){
+        return{
+            template:'<ul><li>{{menu[0]}} </li><li>{{menu[1]}}</li><li>{{menu[2]}}</li></ul>',
+            restrict:'E',
+            
+        }
+    });
+
+    app.directive("calendar",function(){
+        return{
+            link:function(scope,element,attrs){
+                element[0].innerHTML="<input type='text' id='cal'>"
+                $( function() {
+                    $( "#cal" ).datepicker({numberOfMonths: 3,
+      showButtonPanel: true});
+                } );
+            }
+        }
+    })
+
+    app.controller("sumctrl",($scope)=>{
+            $scope.mynumber = 1000;
+    })
+    app.directive("sum",function(){
+	return {
+        controller:'sumctrl',
+        link:function(scope,element,attrs){
+			var s = parseInt(attrs.firstno) + parseInt(attrs.secondno) + scope.mynumber ;
+            element[0].innerHTML="<b>Sum of Two Numbers  </b>"+s;
+			//console.log(attrs.testlevel);
+        },
+		restrict:"E"
+	}
+});
+
+
+app.directive("anim",function(){
+	return {
+		link:function(scope,element,attrs){
+			console.log("Anim ",element[0]);
+            $(element).click(function(){
+                console.log("Element Clicked");
+                $(this).hide(2000);
+                $("p").hide(1000);
+            })
+			
+		},
+		restrict:"A" 
+		
+	}
+})
+
+
+</script>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="myctrl">
+   <shop-header ></shop-header> 
+   </div>
+
+    <sum firstno="100" secondno="200"></sum>
+
+    <calendar></calendar>
+
+    <h1 anim>Hello</h1>
+
+    <h1 anim>Hi JQuery </h1>
+
+    <p>Hello</p>
+    <p>Hello</p>
+    <p>Hello</p>
+    <p>Hello</p>
+    <p>Hello</p>
+</body>
+</html>
