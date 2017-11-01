@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/design.css">
+    <script src="../js/greet.js"></script>
+</head>
+
+<body>
+    <h1>Greet App</h1>
+    <!--table>tr>td>label{FirstName} -->
+    <table>
+        <tr>
+            <td><label for="">FirstName</label></td>
+            <td><input data-len="8" id="firstname" type="text" placeholder="Type First Name Here">
+                <span id="fner" class="error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="">LastName</label></td>
+            <td><input data-len="10" id="lastname" type="text" placeholder="Type Last Name Here">
+                <span id="lner" class="error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><button id="greetBt">Greet</button></td>
+            <td><button id="clearAll">Clear</button></td>
+        </tr>
+
+    </table>
+    <h1 id="result"></h1>
+</body>
+
+</html>
