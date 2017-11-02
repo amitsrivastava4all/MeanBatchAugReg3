@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        window.addEventListener("load", function() {
+            localStorage.branch = "Noida";
+            document.getElementById("branch").value = localStorage.branch;
+        })
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>This is my First Web Page</h1>
+    <a href="pages/greet.html">Greet Example</a>
+    <form action='admin/welcome' method="POST">
+        <input type='text' name='userid' placeholder="Type Userid Here">
+        <input type="password" name='pwd' placeholder="Type Password Here">
+        <input type="hidden" id="branch" name="branch">
+        <input type='submit' value="Login">
+    </form>
+</body>
+
+</html>
