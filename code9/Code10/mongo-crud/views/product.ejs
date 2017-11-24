@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>Products are ::: </h1>
+    <%
+    if(products.length==0){
+      %>
+        <h2>No Product Found....</h2>
+        <%  
+    }
+    %>
+            <%
+    if(products.length>0){
+    %>
+                <table class="table table-striped">
+                    <%
+        for(let i =0 ; i<products.length; i++){
+        %>
+                        <tr>
+                            <td>
+                                <%=products[i].id%>
+                            </td>
+                            <td>
+                                <%=products[i].name%>
+                            </td>
+                            <td>
+                                <%=products[i].price%>
+                            </td>
+                            <td>
+                                <%=products[i].url%>
+                            </td>
+                        </tr>
+                        <%
+        }
+        %>
+                </table>
+                <%
+    }
+    %>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/factory.js"></script>
+    <script src="js/controller.js"></script>
+
+</head>
+
+<body ng-app="myapp" ng-controller="productctrl">
+    <div class="container">
+        <div class="form-group">
+            <label for="">Enter the Price to Search</label>
+            <input class="form-control" type="text" ng-model="searchPrice" placeholder="Type Price to Search">
+
+        </div>
+        <div class="form-group">
+            <button ng-click="searchByPrice()" class="btn btn-success">Search</button>
+
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>URL</th>
+        </tr>
+        <tr ng-repeat="product in result.data">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.url}}</td>
+        </tr>
+    </table>
+
+    Error is {{error}}
+</body>
+
+</html>
